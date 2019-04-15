@@ -53,19 +53,21 @@ class StepManager extends Component {
                 halldealcobasoestar: '',
                 conjuntocerrado: '',
                 balcon: '',
+                banoservicio: '',
                 numeroascensores: -1,
                 saloncomunal: '',
                 zonadelavanderia: '',
                 estudioobiblioteca: '',
                 cuartodeservicio: '',
-                numerodeniveles: 0,
+                numerodeniveles: -1,
                 terraza: '',
                 areaterraza: 0,
                 vista: '',
                 depositoocuartoutil: '',
                 remodelado: '',
                 clubhouse: '',
-                porteria: ''
+                porteria: '',
+                parqueaderovisitantes: '',
             }
         };
     }
@@ -85,7 +87,7 @@ class StepManager extends Component {
                 { name: 'Locación', component: <StepMapPosition getInmobiliaria={() => (this.getInmobiliaria())} updateInmobiliaria={(u) => { this.updateInmobiliaria(u) }} /> },
                 { name: 'Datos principales de inmueble', component: <StepPrincipalForm getInmobiliaria={() => (this.getInmobiliaria())} updateInmobiliaria={(u) => { this.updateInmobiliaria(u) }} /> },
                 { name: 'Datos complementarios de inmueble', component: <StepOptionalForm getInmobiliaria={() => (this.getInmobiliaria())} updateInmobiliaria={(u) => { this.updateInmobiliaria(u) }} /> },
-                { name: 'Certificado', component: <StepCertificate getInmobiliaria={() => (this.getInmobiliaria())} updateStore={(u) => { this.updateInmobiliaria(u) }} /> },
+                { name: 'Certificado', component: <StepCertificate getInmobiliaria={() => (this.getInmobiliaria())} updateInmobiliaria={(u) => { this.updateInmobiliaria(u) }} /> },
             ]
         return (
             <div className='step-progress'>

@@ -78,52 +78,52 @@ export default class StepPrincipalForm extends Component {
     }
 
     isValidArea() {
-        return this.state.form.area
+        return this.state.form
             && this.state.form.area > 0;
     }
 
     isValidBanos() {
-        return this.state.form.banos
+        return this.state.form
             && this.state.form.banos.length > 0;
     }
 
     isValidEstrato() {
-        return this.state.form.estrato
+        return this.state.form
             && this.state.form.estrato.length > 0;
     }
 
     isValidGarajes() {
-        return this.state.form.garajes
+        return this.state.form
             && this.state.form.garajes.length > 0;
     }
 
     isValidHabitaciones() {
-        return this.state.form.habitaciones
+        return this.state.form
             && this.state.form.habitaciones.length > 0;
     }
 
     isValidNumeroAscensores() {
-        return this.state.form.numeroascensores
+        return this.state.form
             && this.state.form.numeroascensores.length > 0;
     }
 
     isValidNumeroDeNiveles() {
-        return this.state.form.numerodeniveles
+        return this.state.form
             && this.state.form.numerodeniveles.length > 0;
     }
 
     isValidNumeroDePiso() {
-        return this.state.form.numerodepiso
+        return this.state.form
             && this.state.form.numerodepiso.length > 0;
     }
 
     isValidTiempoDeConstruido() {
-        return this.state.form.tiempodeconstruido
+        return this.state.form
             && this.state.form.tiempodeconstruido.length > 0;
     }
 
     isValidVista() {
-        return this.state.form.vista
+        return this.state.form
             && this.state.form.vista.length > 0;
     }
 
@@ -176,7 +176,6 @@ export default class StepPrincipalForm extends Component {
             tiempodeconstruido = this.state.form.tiempodeconstruido;
             vista = this.state.form.vista;
             metadata = this.props.getInmobiliaria().metadataForm;
-            debugger
         }
         return (
             <Card className='step-container'>

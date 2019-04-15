@@ -1,10 +1,29 @@
 import React, { Component } from 'react';
 import { Card } from 'react-bootstrap'
+import Loader from 'react-loader-spinner'
 
 export default class StepCertificate extends Component {
     constructor(props) {
         super(props);
 
+        let inmobiliaria = props.getInmobiliaria();
+        this.state = {
+            readyToStep: inmobiliaria.readyToStep,
+            form: inmobiliaria.formulario,
+            metadataForm: inmobiliaria.metadataForm
+        };
+    }
+
+    componentDidMount() {
+        let inmobiliaria = this.props.getInmobiliaria();
+        inmobiliaria.readyToStep = 5;
+        this.state = {
+            readyToStep: inmobiliaria.readyToStep,
+            form: inmobiliaria.formulario,
+            metadataForm: inmobiliaria.metadataForm
+        };
+
+        this.props.updateInmobiliaria(inmobiliaria);
     }
 
     isValidated() {
