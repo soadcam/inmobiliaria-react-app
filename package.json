@@ -2,10 +2,16 @@
   "name": "inmobiliaria-react-app",
   "version": "0.1.0",
   "private": true,
+  "homepage": "http://localhost/test_wordpress/custom-webpage/",
   "dependencies": {
+    "bootstrap": "^4.3.1",
+    "google-maps-react": "^2.0.2",
     "react": "^16.8.6",
+    "react-bootstrap": "^1.0.0-beta.6",
     "react-dom": "^16.8.6",
-    "react-scripts": "2.1.8"
+    "react-loader-spinner": "^2.3.0",
+    "react-scripts": "2.1.8",
+    "react-stepzilla": "^6.0.0"
   },
   "scripts": {
     "start": "react-scripts start",
