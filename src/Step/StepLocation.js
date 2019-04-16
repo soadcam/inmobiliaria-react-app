@@ -82,8 +82,8 @@ export default class StepLocation extends Component {
                 "tipoinmueble": inmobiliaria.location.tipoinmueble
             })
         })
-        .then(result => result.json())
-        .then(response => {
+            .then(result => result.json())
+            .then(response => {
                 inmobiliaria.metadataForm = response.formulario;
                 this.props.updateInmobiliaria(inmobiliaria);
             });
@@ -100,6 +100,7 @@ export default class StepLocation extends Component {
     }
 
     handleTipoInmuebleChange = (e) => {
+        this.props.cleanInmobiliaria();
         this.setState({ tipoInmueble: e.target.value });
     }
 

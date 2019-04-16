@@ -15,14 +15,14 @@ class StepManager extends Component {
         super(props);
         this.state = {};
 
-        this.simpleInmobiliaria = {
+        this.initInmobiliaria = {
             readyToStep: 1,
             location: {
-                tipoinmueble: 'Apartamento',
-                dpto_ccdgo: '11',
-                mpio_ccdgo: '11001',
-                direccion: 'Carrera+19a+103a+62',
-                direccion_formato: 'Carrera 19A 103A 62',
+                tipoinmueble: '',
+                dpto_ccdgo: '',
+                mpio_ccdgo: '',
+                direccion: '',
+                direccion_formato: '',
                 markers: [
                     {
                         name: "Posición actual",
@@ -35,7 +35,8 @@ class StepManager extends Component {
             },
             formulario: {
                 entrada: 'formulario',
-                test: true,
+                test: false,
+                //test: true,
                 direccion: '',
                 direccion_formato: '',
                 dpto_ccdgo: '',
@@ -68,8 +69,33 @@ class StepManager extends Component {
                 clubhouse: '',
                 porteria: '',
                 parqueaderovisitantes: '',
+                banosprivados: '',
+                banospublicos: '',
+                inteligente: '',
+                altura: '',
+                oficina: '',
+                parqueindustrial: '',
+                mesanine: '',
+                tipolocal: '',
+                frente: 0,
+                fondo: 0,
+                uso: '',
+                areaterreno: 0,
+            },
+            reporte: {
+                forecast: {
+                    venta: {
+                        valor_maximo: 0,
+                        valor_minimo: 0,
+                    },
+                    arriendo: {
+                        valor_maximo: 0,
+                        valor_minimo: 0,
+                    }
+                },
             }
         };
+        this.cleanInmobiliaria();
     }
 
     getInmobiliaria() {
@@ -80,14 +106,18 @@ class StepManager extends Component {
         this.simpleInmobiliaria = update;
     }
 
+    cleanInmobiliaria() {
+        this.simpleInmobiliaria = JSON.parse(JSON.stringify(this.initInmobiliaria));
+    }
+
     render() {
         const steps =
             [
-                { name: 'Locación', component: <StepLocation getInmobiliaria={() => (this.getInmobiliaria())} updateInmobiliaria={(u) => { this.updateInmobiliaria(u) }} /> },
-                { name: 'Locación', component: <StepMapPosition getInmobiliaria={() => (this.getInmobiliaria())} updateInmobiliaria={(u) => { this.updateInmobiliaria(u) }} /> },
+                { name: 'Locación', component: <StepLocation getInmobiliaria={() => (this.getInmobiliaria())} updateInmobiliaria={(u) => { this.updateInmobiliaria(u) }} cleanInmobiliaria={() => (this.cleanInmobiliaria())}/> },
+                { name: 'Ubicación', component: <StepMapPosition getInmobiliaria={() => (this.getInmobiliaria())} updateInmobiliaria={(u) => { this.updateInmobiliaria(u) }} /> },
                 { name: 'Datos principales de inmueble', component: <StepPrincipalForm getInmobiliaria={() => (this.getInmobiliaria())} updateInmobiliaria={(u) => { this.updateInmobiliaria(u) }} /> },
                 { name: 'Datos complementarios de inmueble', component: <StepOptionalForm getInmobiliaria={() => (this.getInmobiliaria())} updateInmobiliaria={(u) => { this.updateInmobiliaria(u) }} /> },
-                { name: 'Certificado', component: <StepCertificate getInmobiliaria={() => (this.getInmobiliaria())} updateInmobiliaria={(u) => { this.updateInmobiliaria(u) }} /> },
+                { name: 'Reporte', component: <StepCertificate getInmobiliaria={() => (this.getInmobiliaria())} updateInmobiliaria={(u) => { this.updateInmobiliaria(u) }} /> },
             ]
         return (
             <div className='step-progress'>

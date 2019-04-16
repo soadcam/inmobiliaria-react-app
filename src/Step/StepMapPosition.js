@@ -25,9 +25,11 @@ export class StepMapPosition extends Component {
 
     render() {
         return (
-            <Card className='step-container' style={{ height: '500px' }}>
+            <Card className='step-container' style={{ height: '600px' }}>
                 <Card.Header style={{ fontWeight: 'bold' }}>Datos de ubicación</Card.Header>
                 <Card.Body>
+                    <h3>Arrastra el marcador para seleccionar la ubicación del inmueble.</h3>
+                    <br/>
                     <Map
                         google={this.props.google}
                         style={{ width: '92%', height: '400px' }}
@@ -49,5 +51,9 @@ export class StepMapPosition extends Component {
 }
 
 export default GoogleApiWrapper({
-    apiKey: ('AIzaSyBmGYmlNHoipCPWmhztKFSctgKTMHaTPI4')
+    //dev
+    //apiKey: ('AIzaSyBmGYmlNHoipCPWmhztKFSctgKTMHaTPI4')
+
+    //prod
+    apiKey: ('AIzaSyCJf9gCCapg3J2Md5NDl9djgQEJJ9IZppo')
 })(StepMapPosition)
