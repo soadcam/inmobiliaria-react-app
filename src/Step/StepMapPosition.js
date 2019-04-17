@@ -52,8 +52,8 @@ export class StepMapPosition extends Component {
 
 export default GoogleApiWrapper({
     //dev
-    //apiKey: ('AIzaSyBmGYmlNHoipCPWmhztKFSctgKTMHaTPI4')
+    apiKey: ('AIzaSyBmGYmlNHoipCPWmhztKFSctgKTMHaTPI4')
 
     //prod
-    apiKey: ('AIzaSyCJf9gCCapg3J2Md5NDl9djgQEJJ9IZppo')
+    //apiKey: ('AIzaSyCJf9gCCapg3J2Md5NDl9djgQEJJ9IZppo')
 })(StepMapPosition)

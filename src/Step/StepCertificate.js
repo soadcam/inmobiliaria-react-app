@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Form, Col, Card } from 'react-bootstrap';
 import Loader from 'react-loader-spinner'
+import StepCertificateSumary from './StepCertificateSummary'
 
 export default class StepCertificate extends Component {
     constructor(props) {
@@ -17,6 +18,8 @@ export default class StepCertificate extends Component {
         this.state = {
             readyToStep: inmobiliaria.readyToStep,
             form: inmobiliaria.formulario,
+            metadataForm: inmobiliaria.metadataForm,
+            initValuesForm: props.getInitInmobiliaria(),
         };
         this.props.updateInmobiliaria(inmobiliaria);
     }
@@ -102,12 +105,15 @@ export default class StepCertificate extends Component {
                 );
             else if (this.state.readyToStep === 6)
                 return (
-                    <Card bg="info" text="white" className='step-container-error'>
-                        <Card.Header style={{ fontWeight: 'bold', color: 'white' }}>No se pudo generar el reporte</Card.Header>
-                        <Card.Body>
-                            <Form.Label style={{ color: 'white' }}>{this.state.error}</Form.Label>
-                        </Card.Body>
-                    </Card>
+                    <React.Fragment>
+                        <Card bg="info" text="white" className='step-container-error'>
+                            <Card.Header style={{ fontWeight: 'bold', color: 'white' }}>No se pudo generar el reporte</Card.Header>
+                            <Card.Body>
+                                <Form.Label style={{ color: 'white' }}>{this.state.error}</Form.Label>
+                            </Card.Body>
+                        </Card>
+                        <StepCertificateSumary form={this.state.form} metadataForm={this.state.metadataForm} initValuesForm={this.state.initValuesForm}/>
+                    </React.Fragment>
                 );
             return (
                 <React.Fragment>
@@ -136,6 +142,9 @@ export default class StepCertificate extends Component {
                                 </Card.Body>
                             </Card>
                         </Form.Group>
+                    </Form.Row>
+                    <Form.Row>
+                        <StepCertificateSumary form={this.state.form} metadataForm={this.state.metadataForm} initValuesForm={this.state.initValuesForm}/>
                     </Form.Row>
                 </React.Fragment>
             );
