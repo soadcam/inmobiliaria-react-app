@@ -41,7 +41,7 @@ export default class StepCertificate extends Component {
                     this.generateCertificate(headers, response, inmobiliaria);
                 else {
                     this.setState({ readyToStep: 6 });
-                    this.setState({ error: 'Se generó el avalúo certificado, pero no se pudo generar el certificado digital.' });
+                    this.setState({ error: 'No contamos con información suficiente para estimar el precio del inmueble solicitado, podemos ayudarte con un avalúo certificado.' });
                 }
             });
     }
@@ -103,9 +103,9 @@ export default class StepCertificate extends Component {
             else if (this.state.readyToStep === 6)
                 return (
                     <Card bg="info" text="white" className='step-container-error'>
-                        <Card.Header style={{ fontWeight: 'bold' }}>No se pudo generar el reporte</Card.Header>
+                        <Card.Header style={{ fontWeight: 'bold', color: 'white' }}>No se pudo generar el reporte</Card.Header>
                         <Card.Body>
-                            <Form.Label>{this.state.error}</Form.Label>
+                            <Form.Label style={{ color: 'white' }}>{this.state.error}</Form.Label>
                         </Card.Body>
                     </Card>
                 );
