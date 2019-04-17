@@ -41,7 +41,7 @@ export default class StepCertificate extends Component {
                     this.generateCertificate(headers, response, inmobiliaria);
                 else {
                     this.setState({ readyToStep: 6 });
-                    this.setState({ error: 'No contamos con información suficiente para estimar el precio del inmueble solicitado, podemos ayudarte con un avalúo certificado.' });
+                    this.setState({ error: 'No contamos con información suficiente para estimar el precio del inmueble solicitado, podemos ayudarte con un avalúo certificado. Por favor contáctanos.' });
                 }
             });
     }
