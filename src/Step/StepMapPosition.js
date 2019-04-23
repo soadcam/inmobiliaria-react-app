@@ -32,7 +32,7 @@ export class StepMapPosition extends Component {
                     <br/>
                     <Map
                         google={this.props.google}
-                        style={{ width: '92%', height: '400px' }}
+                        style={{ width: '92%', height: '350px' }}
                         zoom={14}
                         initialCenter={this.state.markers[0].position}>
                         {this.state.markers.map((marker, index) => (

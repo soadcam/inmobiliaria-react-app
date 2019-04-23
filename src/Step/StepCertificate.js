@@ -19,7 +19,6 @@ export default class StepCertificate extends Component {
             readyToStep: inmobiliaria.readyToStep,
             form: inmobiliaria.formulario,
             metadataForm: inmobiliaria.metadataForm,
-            initValuesForm: props.getInitInmobiliaria(),
         };
         this.props.updateInmobiliaria(inmobiliaria);
     }
@@ -92,18 +91,7 @@ export default class StepCertificate extends Component {
 
     render() {
         if (this) {
-            if (this.state.readyToStep === 4)
-                return (
-                    <div style={{ textAlign: 'center' }}>
-                        <Loader
-                            type="Puff"
-                            color="#00BFFF"
-                            height={80}
-                            width={80}
-                        />
-                    </div>
-                );
-            else if (this.state.readyToStep === 6)
+            if (this.state.readyToStep === 6)
                 return (
                     <React.Fragment>
                         <Card bg="info" text="white" className='step-container-error'>
@@ -112,41 +100,50 @@ export default class StepCertificate extends Component {
                                 <Form.Label style={{ color: 'white' }}>{this.state.error}</Form.Label>
                             </Card.Body>
                         </Card>
-                        <StepCertificateSumary form={this.state.form} metadataForm={this.state.metadataForm} initValuesForm={this.state.initValuesForm}/>
+                        <StepCertificateSumary form={this.state.form} metadataForm={this.state.metadataForm} />
+                    </React.Fragment>
+                );
+            else if (this.state.readyToStep === 5)
+                return (
+                    <React.Fragment>
+                        <Form.Row>
+                            <Form.Group as={Col} md="6">
+                                <Card className='step-container'>
+                                    <Card.Header style={{ fontWeight: 'bold' }}>Valores de venta</Card.Header>
+                                    <Card.Body>
+                                        <Form.Label>
+                                            Según nuestro análisis de inteligencia artificial podemos
+                                            confirmar que el valor comercial en venta del inmueble se
+                                            encuentra entre <b>$ {this.state.reporte.forecast.venta.valor_minimo.toLocaleString()}</b> y <b>$ {this.state.reporte.forecast.venta.valor_maximo.toLocaleString()}</b>
+                                        </Form.Label>
+                                    </Card.Body>
+                                </Card>
+                            </Form.Group>
+                            <Form.Group as={Col} md="6">
+                                <Card className='step-container'>
+                                    <Card.Header style={{ fontWeight: 'bold' }}>Valores de renta</Card.Header>
+                                    <Card.Body>
+                                        <Form.Label>
+                                            Según nuestro análisis de inteligencia artificial podemos
+                                            confirmar que el valor comercial en renta del inmueble se
+                                            encuentra entre <b>$ {this.state.reporte.forecast.arriendo.valor_minimo.toLocaleString()}</b> y <b>$ {this.state.reporte.forecast.arriendo.valor_maximo.toLocaleString()}</b>
+                                        </Form.Label>
+                                    </Card.Body>
+                                </Card>
+                            </Form.Group>
+                        </Form.Row>
+                        <StepCertificateSumary form={this.state.form} metadataForm={this.state.metadataForm} />
                     </React.Fragment>
                 );
             return (
-                <React.Fragment>
-                    <Form.Row>
-                        <Form.Group as={Col} md="6">
-                            <Card className='step-container'>
-                                <Card.Header style={{ fontWeight: 'bold' }}>Valores de venta</Card.Header>
-                                <Card.Body>
-                                    <Form.Label><b>Valor máximo: </b></Form.Label>
-                                    <Form.Label>$ {this.state.reporte.forecast.venta.valor_maximo.toLocaleString()}</Form.Label>
-                                    <br />
-                                    <Form.Label><b>Valor mínimo: </b></Form.Label>
-                                    <Form.Label>$ {this.state.reporte.forecast.venta.valor_minimo.toLocaleString()}</Form.Label>
-                                </Card.Body>
-                            </Card>
-                        </Form.Group>
-                        <Form.Group as={Col} md="6">
-                            <Card className='step-container'>
-                                <Card.Header style={{ fontWeight: 'bold' }}>Valores de arriendo</Card.Header>
-                                <Card.Body>
-                                    <Form.Label><b>Valor máximo: </b></Form.Label>
-                                    <Form.Label>$ {this.state.reporte.forecast.arriendo.valor_maximo.toLocaleString()}</Form.Label>
-                                    <br />
-                                    <Form.Label><b>Valor mínimo: </b></Form.Label>
-                                    <Form.Label>$ {this.state.reporte.forecast.arriendo.valor_minimo.toLocaleString()}</Form.Label>
-                                </Card.Body>
-                            </Card>
-                        </Form.Group>
-                    </Form.Row>
-                    <Form.Row>
-                        <StepCertificateSumary form={this.state.form} metadataForm={this.state.metadataForm} initValuesForm={this.state.initValuesForm}/>
-                    </Form.Row>
-                </React.Fragment>
+                <div style={{ textAlign: 'center' }}>
+                    <Loader
+                        type="Puff"
+                        color="#00BFFF"
+                        height={80}
+                        width={80}
+                    />
+                </div>
             );
         }
     }
